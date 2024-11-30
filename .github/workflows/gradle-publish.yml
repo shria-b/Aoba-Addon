@@ -50,6 +50,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.PERSONAL_TOKEN }}
-        file: build/libs/**
+        path: build/libs/**
         tag: ${{ github.ref }}
         overwrite: true
