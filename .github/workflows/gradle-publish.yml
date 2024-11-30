@@ -45,6 +45,8 @@ jobs:
         compression-level: 6
         overwrite: true
         include-hidden-files: false
+    - name: List files in build/libs/
+      run: ls build/libs/
 
     - name: Upload to Releases
       uses: svenstaro/upload-release-action@v2
