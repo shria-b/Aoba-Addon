@@ -186,6 +186,7 @@ public class BetterMaceAura extends Module implements TickListener {
 					scheduleZeroSecondTask();
 					MC.player.getInventory().selectedSlot = OldSlot;
 				}
+				entityToAttack = null;
 			}
 		}
 	}
