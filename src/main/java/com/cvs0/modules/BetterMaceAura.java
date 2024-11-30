@@ -157,6 +157,7 @@ public class BetterMaceAura extends Module implements TickListener {
 
 				if (entityToAttack != null) {
 					// If the entity is found, we want to attach it.
+					MC.player.getInventory().selectedSlot = this.getMaceSlot();
 					int packetsRequired = Math.round((float) Math.ceil(Math.abs(height.getValue() / 10.0f)));
 					for (int i = 0; i < packetsRequired; i++) {
 						MC.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.OnGroundOnly(false, false));
@@ -184,7 +185,9 @@ public class BetterMaceAura extends Module implements TickListener {
 	}
 	public boolean isSafety() {
 		if (MC.player.getMainHandStack().getItem() == Items.MACE || autoSwitchtoMace.getValue()) {
-			MC.player.getInventory().selectedSlot = this.getMaceSlot();
+			if (this.getMaceSlot() == MC.player.getInventory().selectedSlot && MC.player.getMainHandStack().getItem() != Items.MACE) {
+				return false;
+			}
 			return true;
 		}
 		return false;
