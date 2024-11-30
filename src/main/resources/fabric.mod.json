@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "exampleaddon",
+  "id": "auraaddon",
   "version": "${version}",
-  "name": "ExampleAddon",
+  "name": "AuraAddon",
   "description": "",
   "authors": [],
   "contact": {
@@ -13,7 +13,7 @@
   "environment": "client",
   "entrypoints": {
     "aoba": [
-      "com.cvs0.ExampleAddon"
+      "com.cvs0.AuraAddon"
     ]
   },
   "depends": {
