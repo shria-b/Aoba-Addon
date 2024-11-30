@@ -177,7 +177,7 @@ public class BetterMaceAura extends Module implements TickListener {
 				MC.player.networkHandler.sendPacket(
 						new PlayerMoveC2SPacket.PositionAndOnGround(newPos.x, newPos.y, newPos.z, false, false));
 
-				if (entityToAttack.getHealth() >= 0) {
+				if (entityToAttack.getHealth() > 0) {
 					MC.interactionManager.attackEntity(MC.player, entityToAttack);
 						MC.player.swingHand(Hand.MAIN_HAND);
 				}
