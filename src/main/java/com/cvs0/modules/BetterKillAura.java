@@ -228,7 +228,7 @@ public class BetterKillAura extends Module implements TickListener {
 							EntityHitResult entityResult = (EntityHitResult) ray;
 							Entity ent = entityResult.getEntity();
 
-							if (ent == entityToAttack) {
+							if (ent == entityToAttack && entityToAttack.getHealth() >= 0) {
 								MC.player.swingHand(Hand.MAIN_HAND);
 								MC.interactionManager.attackEntity(MC.player, entityToAttack);
 							}
