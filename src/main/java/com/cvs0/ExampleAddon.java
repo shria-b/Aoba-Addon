@@ -14,7 +14,7 @@ import java.util.List;
 public class ExampleAddon implements IAddon {
     @Override
     public void onInitialize() {
-        LogUtils.getLogger().info("ExampleAddon has been initialized!");
+        LogUtils.getLogger().info("Aura Addon has been initialized!");
     }
 
     @Override
@@ -29,17 +29,17 @@ public class ExampleAddon implements IAddon {
 
     @Override
     public String getName() {
-        return "ExampleAddon";
+        return "AuraAddon";
     }
 
     @Override
     public String getId() {
-        return "exampleaddon";
+        return "auraaddon";
     }
 
     @Override
     public String getDescription() {
-        return "Example Addon";
+        return "Aura Addon add auto switch module and modify aura";
     }
 
     @Override
@@ -59,6 +59,6 @@ public class ExampleAddon implements IAddon {
 
     @Override
     public String getAuthor() {
-        return "cvs0";
+        return "shria_";
     }
 }
