@@ -113,7 +113,6 @@ public class BetterMaceAura extends Module implements TickListener {
 	public void onTick(TickEvent.Post event) {
 		if (this.isSafety() && (MC.player.getAttackCooldownProgress(0) == 1|| noAttackDelay.getValue())) {
 
-			int OldSlot = MC.player.getInventory().selectedSlot;
 			if (entityToAttack == null) {
 				ArrayList<Entity> hitList = new ArrayList<Entity>();
 
@@ -158,9 +157,8 @@ public class BetterMaceAura extends Module implements TickListener {
 					}
 				}
 
-				if (entityToAttack != null && entityToAttack.getHealth() > 0) {
+				if (entityToAttack != null) {
 					// If the entity is found, we want to attach it.
-					MC.player.getInventory().selectedSlot = this.getMaceSlot();
 					int packetsRequired = Math.round((float) Math.ceil(Math.abs(height.getValue() / 10.0f)));
 					for (int i = 0; i < packetsRequired; i++) {
 						MC.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.OnGroundOnly(false, false));
@@ -180,10 +178,14 @@ public class BetterMaceAura extends Module implements TickListener {
 				MC.player.networkHandler.sendPacket(
 						new PlayerMoveC2SPacket.PositionAndOnGround(newPos.x, newPos.y, newPos.z, false, false));
 
-				MC.interactionManager.attackEntity(MC.player, entityToAttack);
-				MC.player.swingHand(Hand.MAIN_HAND);
-				scheduleZeroSecondTask();
-				MC.player.getInventory().selectedSlot = OldSlot;
+				if (entityToAttack.getHealth() > 0) {
+					int OldSlot = MC.player.getInventory().selectedSlot;
+					MC.player.getInventory().selectedSlot = this.getMaceSlot();
+					MC.interactionManager.attackEntity(MC.player, entityToAttack);
+					MC.player.swingHand(Hand.MAIN_HAND);
+					scheduleZeroSecondTask();
+					MC.player.getInventory().selectedSlot = OldSlot;
+				}
 			}
 		}
 	}
