@@ -169,16 +169,17 @@ public class BetterMaceAura extends Module implements TickListener {
 							new PlayerMoveC2SPacket.PositionAndOnGround(newPos.x, newPos.y, newPos.z, false, false));
 				}
 			} else {
-				int packetsRequired = Math.round((float) Math.ceil(Math.abs(height.getValue() / 10.0f)));
-				for (int i = 0; i < packetsRequired; i++) {
-					MC.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.OnGroundOnly(false, false));
-				}
-
-				Vec3d newPos = MC.player.getPos();
-				MC.player.networkHandler.sendPacket(
-						new PlayerMoveC2SPacket.PositionAndOnGround(newPos.x, newPos.y, newPos.z, false, false));
-
 				if (entityToAttack.getHealth() > 0) {
+					int packetsRequired = Math.round((float) Math.ceil(Math.abs(height.getValue() / 10.0f)));
+					for (int i = 0; i < packetsRequired; i++) {
+						MC.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.OnGroundOnly(false, false));
+					}
+
+					Vec3d newPos = MC.player.getPos();
+					MC.player.networkHandler.sendPacket(
+							new PlayerMoveC2SPacket.PositionAndOnGround(newPos.x, newPos.y, newPos.z, false, false));
+
+				
 					int OldSlot = MC.player.getInventory().selectedSlot;
 					MC.player.getInventory().selectedSlot = this.getMaceSlot();
 					MC.interactionManager.attackEntity(MC.player, entityToAttack);
