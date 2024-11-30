@@ -22,6 +22,8 @@
 package com.cvs0.modules;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import net.aoba.Aoba;
 import net.aoba.event.events.TickEvent;
@@ -111,6 +113,7 @@ public class BetterMaceAura extends Module implements TickListener {
 	public void onTick(TickEvent.Post event) {
 		if (this.isSafety() && (MC.player.getAttackCooldownProgress(0) == 1|| noAttackDelay.getValue())) {
 
+			int OldSlot = MC.player.getInventory().selectedSlot;
 			if (entityToAttack == null) {
 				ArrayList<Entity> hitList = new ArrayList<Entity>();
 
@@ -155,7 +158,7 @@ public class BetterMaceAura extends Module implements TickListener {
 					}
 				}
 
-				if (entityToAttack != null) {
+				if (entityToAttack != null && entityToAttack.getHealth() > 0) {
 					// If the entity is found, we want to attach it.
 					MC.player.getInventory().selectedSlot = this.getMaceSlot();
 					int packetsRequired = Math.round((float) Math.ceil(Math.abs(height.getValue() / 10.0f)));
@@ -177,11 +180,10 @@ public class BetterMaceAura extends Module implements TickListener {
 				MC.player.networkHandler.sendPacket(
 						new PlayerMoveC2SPacket.PositionAndOnGround(newPos.x, newPos.y, newPos.z, false, false));
 
-				if (entityToAttack.getHealth() > 0) {
-					MC.interactionManager.attackEntity(MC.player, entityToAttack);
-						MC.player.swingHand(Hand.MAIN_HAND);
-				}
-				entityToAttack = null;
+				MC.interactionManager.attackEntity(MC.player, entityToAttack);
+				MC.player.swingHand(Hand.MAIN_HAND);
+				scheduleZeroSecondTask();
+				MC.player.getInventory().selectedSlot = OldSlot;
 			}
 		}
 	}
@@ -204,4 +206,16 @@ public class BetterMaceAura extends Module implements TickListener {
 		}
 		return Slot;
 	}
+	private void scheduleZeroSecondTask() {
+    Timer timer = new Timer();
+    timer.schedule(new TimerTask() {
+        @Override
+        public void run() {
+            // 这里放置您希望在0秒后执行的代码
+            // 例如：entityToAttack = null;
+            entityToAttack = null;
+        }
+    }, 0); // 0秒后执行
+}
+
 }
