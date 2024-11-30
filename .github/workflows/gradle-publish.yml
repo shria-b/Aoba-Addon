@@ -52,6 +52,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.PERSONAL_TOKEN }}
-        file: build/libs/*.jar
+        file: build/libs/AuraAddon-1.0.0.jar
         tag: ${{ github.ref }}
         overwrite: true
