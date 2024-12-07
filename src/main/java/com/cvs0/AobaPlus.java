@@ -11,7 +11,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
-public class AuraAddon implements IAddon {
+public class AobaPlus implements IAddon {
     @Override
     public void onInitialize() {
         LogUtils.getLogger().info("Aura Addon has been initialized!");
@@ -32,12 +32,12 @@ public class AuraAddon implements IAddon {
 
     @Override
     public String getName() {
-        return "AuraAddon";
+        return "AobaPlus";
     }
 
     @Override
     public String getId() {
-        return "auraaddon";
+        return "aobaplus";
     }
 
     @Override

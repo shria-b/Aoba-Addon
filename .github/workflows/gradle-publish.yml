@@ -52,6 +52,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.PERSONAL_TOKEN }}
-        file: build/libs/AuraAddon-1.0.0.jar
+        file: build/libs/AobaPlus-1.0.0.jar
         tag: 1.0
         overwrite: true

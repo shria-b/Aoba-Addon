@@ -100,7 +100,7 @@ public class BetterKillAura extends Module implements TickListener {
 	public BetterKillAura() {
 		super("BetterKillAura");
 
-		this.setCategory(Category.of("AuraAddon"));
+		this.setCategory(Category.of("AobaPlus"));
 		this.setDescription("Attacks anything within your personal space.");
 
 		this.addSetting(noAttackDelay);

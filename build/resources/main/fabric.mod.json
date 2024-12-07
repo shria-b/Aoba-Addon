@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "auraaddon",
+  "id": "aobaplus",
   "version": "1.0.0",
-  "name": "AuraAddon",
+  "name": "AobaPlus",
   "description": "",
   "authors": [],
   "contact": {
     "repo": "https://github.com/cvs0/Fishy-BTONE-untitledod"
   },
   "license": "MIT",
-  "icon": "assets/aoba-addon-template/icon.png",
+  "icon": "assets/aobaplus/icon.png",
   "environment": "client",
   "entrypoints": {
     "aoba": [
-      "com.cvs0.AuraAddon"
+      "com.cvs0.AobaPlus"
     ]
   },
   "depends": {
     "fabricloader": ">=0.15.11",
     "fabric": "*",
-    "minecraft": "~1.21.1"
+    "minecraft": "~1.21.3"
   }
 }

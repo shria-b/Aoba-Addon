@@ -75,7 +75,7 @@ public class BetterMaceAura extends Module implements TickListener {
 	public BetterMaceAura() {
 		super("BetterMaceAura");
 
-		this.setCategory(Category.of("AuraAddon"));
+		this.setCategory(Category.of("AobaPlus"));
 		this.setDescription(
 				"Smashes players in your personal space with a Mace with extreme damage. Be sure to enable NoFall for best results.");
 
